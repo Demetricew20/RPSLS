@@ -16,7 +16,6 @@ class Game:
         print('**RULES**:\nEach player will simultaneously through a gesture from the available options list.'
               '\nScoring goes as follows:\nRock > Scissors\nScissors > Paper\nPaper > Rock\nRock > Lizard\nLizard > Spock'
               '\nSpock > Scissors\nScissors > Lizard\nLizard > Paper\nPaper > Spock\nSpock > Rock')
-
     # Select 1-player or 2-players
     def select_mode(self):
         user_input = input('Enter mode- Single-Player | Multi-Player : ')
@@ -24,6 +23,22 @@ class Game:
             user_input = input('Must choose Single-Player or Multi-Player. Try again: ')
         self.mode_selected = user_input
         print(f'*{self.mode_selected} mode selected*')
+
+    def validate_user_input(self, player1, player2):
+        if self.mode_selected == 'Single-Player':
+            print(f'Available Options: {self.options_list}')
+            player1.gesture = input(f'{player1.name} select gesture: ')
+            while player1.gesture not in self.options_list:
+                player1.gesture = input(f'*{player1.name}* choose from options list only! Try again: ')
+            print(f'{player1.name} selected : {player1.gesture}')
+        elif self.mode_selected == 'Multi-Player':
+            player_list = [player1, player2]
+            print(f'Available Options: {self.options_list}')
+            for player in player_list:
+                player.gesture = input(f'{player.name} select gesture: ')
+                while player.gesture not in self.options_list:
+                    player.gesture = input(f'*{player.name}* choose from options list only! Try again: ')
+                print(f'{player.name} selected : {player.gesture}')
 
     # Run Game
     def start_game(self, player1, player2, cpu):
@@ -34,11 +49,7 @@ class Game:
             tie_count = 0
             while player1_wins != 2 and cpu_wins != 2:
                 # Player1 move
-                print(f'Available Options: {self.options_list}')
-                player1.gesture = input(f'{player1.name} select gesture: ')
-                while player1.gesture not in self.options_list:
-                    player1.gesture = input(f'*{player1.name}* choose from options list only! Try again: ')
-                print(f'{player1.name} selected : {player1.gesture}')
+                Game.validate_user_input(self, player1, player2)
                 # CPU move
                 n = random.randint(0, 4)
                 cpu.gesture = options_list[n]
@@ -82,20 +93,8 @@ class Game:
             player2_wins = 0
             tie_count = 0
             while player1_wins != 2 and player2_wins != 2:
-                # Player1 move
-                print(f'Available Options: {self.options_list}')
-                player1.gesture = input(f'{player1.name} select gesture: ')
-                while player1.gesture not in self.options_list:
-                    player1.gesture = input(f'*{player1.name}* Choose from options list only! Try again: ')
-                print(f'Player1 selected : {player1.gesture}')
-                # Player2 move
-                n = random.randint(0, 4)
-                print(f'Available Options: {self.options_list}')
-                player2.gesture = input(f'{player2.name} select gesture: ')
-                while player2.gesture not in self.options_list:
-                    player2.gesture = input(f'*{player2.name}* Choose from options list only! Try again: ')
-                print(f'{player2.name} selected : {player2.gesture}')
-
+                #Player Moves
+                Game.validate_user_input(self, player1, player2)
                 # Scoring
                 if player1.gesture == player2.gesture:
                     print('It is a tie!')
