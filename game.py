@@ -10,7 +10,7 @@ class Game:
 
     #Welcome Message
     def welcome_message(self):
-        print (f'Welcome to {self.name}!')
+        print(f'Welcome to {self.name}!')
     #Rules
     def rules(self):
         print('**RULES**:\nEach player will simultaneously through a gesture from the available options list.'
