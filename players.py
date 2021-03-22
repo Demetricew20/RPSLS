@@ -3,9 +3,9 @@
 class Players:
     def __init__(self, name):
         self.name = name
+        self.gesture = ''
 
-    #Select gesture
 
 class CPU(Players):
     def __init__(self):
-        super().__init__()
+        super(CPU, self).__init__(Players)

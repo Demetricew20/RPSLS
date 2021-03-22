@@ -8,7 +8,9 @@ if __name__ == '__main__':
     rpsls.rules()
     rpsls.select_mode()
 
-    # cpu = CPU()
-    # player1 = Players('Player1')
+    cpu = CPU()
+    player1 = Players('Player1')
     # player2 = Players('Player2')
+
+    rpsls.start_game(player1, cpu)
 
