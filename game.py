@@ -93,8 +93,20 @@ class Game:
             player2_wins = 0
             tie_count = 0
             while player1_wins != 2 and player2_wins != 2:
-                #Player Moves
-                Game.validate_user_input(self, player1, player2)
+                # Player1 move
+                print(f'Available Options: {self.options_list}')
+                player1.gesture = input(f'{player1.name} select gesture: ')
+                while player1.gesture not in self.options_list:
+                    player1.gesture = input(f'*{player1.name}* Choose from options list only! Try again: ')
+                print(f'{player1.name} selected : {player1.gesture}')
+                # Player2 move
+                n = random.randint(0, 4)
+                print(f'Available Options: {self.options_list}')
+                player2.gesture = input(f'{player2.name} select gesture: ')
+                while player2.gesture not in self.options_list:
+                    player2.gesture = input(f'*{player2.name}* Choose from options list only! Try again: ')
+                print(f'{player2.name} selected : {player2.gesture}')
+
                 # Scoring
                 if player1.gesture == player2.gesture:
                     print('It is a tie!')
