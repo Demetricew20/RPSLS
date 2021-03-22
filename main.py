@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     cpu = CPU()
     player1 = Players('Player1')
-    # player2 = Players('Player2')
+    player2 = Players('Player2')
 
-    rpsls.start_game(player1, cpu)
+    rpsls.start_game(player1, player2, cpu)
 

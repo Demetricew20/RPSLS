@@ -21,24 +21,75 @@ class Game:
             self.mode = user_input
             print(f'*{self.mode} mode selected*')
     #Run Game
-    def start_game(self, player1, player2):
-        options_list = self.options_list.copy()
-        player1_wins = 0
-        cpu_wins = 0
-        tie_count = 0
+    def start_game(self, player1, player2, cpu):
         if self.mode == 'Single-Player':
-            #Provide Results
-            #Handle Ties
-            #Keep Score, while loop, score tracker
+            options_list = self.options_list.copy()
+            player1_wins = 0
+            cpu_wins = 0
+            tie_count = 0
             while player1_wins != 2 and cpu_wins != 2:
                 #Player1 move
                 print(f'Available Options: {self.options_list}')
                 player1.gesture = input('Select gesture: ')
-                print(f'User selected : {player1.gesture}')
+                while player1.gesture not in self.options_list:
+                    player1.gesture = input('Choose from options list only! Try again: ')
+                print(f'Player1 selected : {player1.gesture}')
                 #CPU move
                 n = random.randint(0, 4)
-                player2.gesture = options_list[n]
-                print(f'CPU selected : {player2.gesture}')
+                cpu.gesture = options_list[n]
+                print(f'CPU selected : {cpu.gesture}')
+
+                #Scoring
+                if player1.gesture == cpu.gesture:
+                    print('It is a tie!')
+                    tie_count += 1
+                elif player1.gesture == 'Rock' and cpu.gesture in ('Lizard', 'Scissors'):
+                    print('Player1 wins round!')
+                    player1_wins += 1
+                elif player1.gesture == 'Paper' and cpu.gesture in ('Spock', 'Rock'):
+                    print('Player1 wins round!')
+                    player1_wins += 1
+                elif player1.gesture == 'Scissors' and cpu.gesture in ('Paper', 'Lizard'):
+                    print('Player1 wins round!')
+                    player1_wins += 1
+                elif player1.gesture == 'Lizard' and cpu.gesture in ('Paper', 'Spock'):
+                    print('Player1 wins round!')
+                    player1_wins += 1
+                elif player1.gesture == 'Spock' and cpu.gesture in ('Rock', 'Lizard'):
+                    print('Player1 wins round!')
+                    player1_wins += 1
+                else:
+                    print('CPU wins round!')
+                    cpu_wins += 1
+
+                #Score Tracker for game
+                if player1_wins == 2:
+                    print('Player1 wins game!')
+                    break
+                elif cpu_wins == 2:
+                    print('CPU wins game!')
+                    break
+                elif tie_count == 2:
+                    print('Game is a tie. Rematch?')
+                    break
+        if self.mode == 'Multi-Player':
+            player1_wins = 0
+            player2_wins = 0
+            tie_count = 0
+            while player1_wins != 2 and player2_wins != 2:
+                #Player1 move
+                print(f'Available Options: {self.options_list}')
+                player1.gesture = input('Select gesture: ')
+                while player1.gesture not in self.options_list:
+                    player1.gesture = input('Choose from options list only! Try again: ')
+                print(f'Player1 selected : {player1.gesture}')
+                #Player2 move
+                n = random.randint(0, 4)
+                print(f'Available Options: {self.options_list}')
+                player2.gesture = input('Select gesture: ')
+                while player2.gesture not in self.options_list:
+                    player2.gesture = input('Choose from options list only! Try again: ')
+                print(f'Player2 selected : {player2.gesture}')
 
                 #Scoring
                 if player1.gesture == player2.gesture:
@@ -60,25 +111,19 @@ class Game:
                     print('Player1 wins round!')
                     player1_wins += 1
                 else:
-                    print('CPU wins round!')
-                    cpu_wins += 1
-                    
+                    print('Player2 wins round!')
+                    player2_wins += 1
+
                 #Score Tracker for game
                 if player1_wins == 2:
                     print('Player1 wins game!')
                     break
-                elif cpu_wins == 2:
-                    print('CPU wins game!')
+                elif player2_wins == 2:
+                    print('Player2 wins game!')
                     break
                 elif tie_count == 2:
                     print('Game is a tie. Rematch?')
                     break
-
-
-            #Best of Three
-
-
-
 
 
     #End Game/Message
