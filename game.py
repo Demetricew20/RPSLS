@@ -9,12 +9,9 @@ class Game:
         self.options_list = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
 
     # Welcome Message
-
     def welcome_message(self):
         print(f'Welcome to {self.name}!')
-
     # Rules
-
     def rules(self):
         print('**RULES**:\nEach player will simultaneously through a gesture from the available options list.'
               '\nScoring goes as follows:\nRock > Scissors\nScissors > Paper\nPaper > Rock\nRock > Lizard\nLizard > Spock'
