@@ -3,8 +3,10 @@ import random
 class Game:
     def __init__(self, name):
         self.name = name
-        self.mode = ""
+        self.mode_options = ('Single-Player', 'Multi-Player')
+        self.mode_selected = ''
         self.options_list = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
+
 
     #Welcome Message
     def welcome_message(self):
@@ -17,12 +19,13 @@ class Game:
     #Select 1-player or 2-players
     def select_mode(self):
         user_input = input('Enter mode- Single-Player | Multi-Player : ')
-        if user_input == 'Single-Player' or user_input == 'Multi-Player':
-            self.mode = user_input
-            print(f'*{self.mode} mode selected*')
+        while user_input not in self.mode_options:
+            user_input = input('Must choose Single-Player or Multi-Player. Try again: ')
+        self.mode_selected = user_input
+        print(f'*{self.mode_selected} mode selected*')
     #Run Game
     def start_game(self, player1, player2, cpu):
-        if self.mode == 'Single-Player':
+        if self.mode_selected == 'Single-Player':
             options_list = self.options_list.copy()
             player1_wins = 0
             cpu_wins = 0
@@ -72,7 +75,7 @@ class Game:
                 elif tie_count == 2:
                     print('Game is a tie. Rematch?')
                     break
-        if self.mode == 'Multi-Player':
+        if self.mode_selected == 'Multi-Player':
             player1_wins = 0
             player2_wins = 0
             tie_count = 0
