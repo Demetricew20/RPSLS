@@ -1,16 +1,11 @@
 
 
-class CPU:
-    def __init__(self):
-        self.options = ['Rock',  'Paper', 'Scissors', 'Lizard', 'Spock']
-
-
-class Players(CPU):
+class Players:
     def __init__(self, name):
-        super(CPU, self).__init__()
         self.name = name
 
+    #Select gesture
 
-
-    # def __repr__(self):
-    #     print(f'{self.name}')
+class CPU(Players):
+    def __init__(self):
+        super().__init__()
