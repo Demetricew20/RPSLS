@@ -75,18 +75,8 @@ class Game(Score):
                 else:
                     print('CPU wins round!')
                     score.cpu_wins += 1
-
                 # Score Tracker for game
                 score.score_tracker(player1, player2, cpu)
-                # if score.player1_wins == 2:
-                #     print(f'{player1.name} wins game!')
-                #     break
-                # elif score.cpu_wins == 2:
-                #     print('CPU wins game!')
-                #     break
-                # elif score.tie_count == 2:
-                #     print('Game is a tie!')
-                #     break
         #MultiPlayer
         if self.mode_selected == 'Multi-Player':
             score = Score(0, 0, 0, 0)
@@ -115,7 +105,6 @@ class Game(Score):
                 else:
                     print(f'{player2.name} wins round!')
                     score.player2_wins += 1
-
                 # Score Tracker for game
                 score.score_tracker(player1, player2, cpu)
 
