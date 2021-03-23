@@ -7,7 +7,7 @@ if __name__ == '__main__':
     rpsls.welcome_message()
     rpsls.rules()
     rpsls.select_mode()
-    cpu = CPU()
+    cpu = CPU('CPU')
     player1 = Humans('John')
     player2 = Humans('Jane')
     rpsls.start_game(player1, player2, cpu)
