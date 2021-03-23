@@ -16,8 +16,8 @@ class Game(Score):
     # Rules
     def rules(self):
         print('**RULES**:\nEach player will simultaneously through a gesture from the available options list.'
-              '\nScoring goes as follows:\nRock > Scissors\nScissors > Paper\nPaper > Rock\nRock > Lizard\nLizard > Spock'
-              '\nSpock > Scissors\nScissors > Lizard\nLizard > Paper\nPaper > Spock\nSpock > Rock')
+              '\nScoring goes as follows:\nRock > Scissors\nRock > Lizard\nPaper > Rock\nPaper > Spock'
+              '\nScissors > Lizard\nScissors > Paper\nLizard > Spock\nLizard > Paper\nSpock > Scissors\nSpock > Rock')
 
     # Select 1-player or 2-players
     def select_mode(self):
