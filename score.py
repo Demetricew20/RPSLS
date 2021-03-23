@@ -1,5 +1,6 @@
 from players import player_list
 
+
 class Score:
     def __init__(self, player1_wins, player2_wins, cpu_wins, tie_count):
         self.player1_wins = player1_wins
@@ -10,6 +11,7 @@ class Score:
 
     def score_tracker(self):
         tracker = self.tracker.copy()
+        #Loop Through Players & Player wins
         lst = player_list
         for i in range(0, len(tracker)):
             if self.tie_count == 2:
@@ -17,7 +19,7 @@ class Score:
                 break
             elif tracker[i] == 2:
                 print(f'{lst[i].name} has won the game!')
-
+                return
 
     def scoring_rules(self, mode_selected, player1, cpu, player2):
         if player1.gesture == cpu.gesture or player1.gesture == player2.gesture:

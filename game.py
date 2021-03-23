@@ -18,6 +18,7 @@ class Game(Score):
         print('**RULES**:\nEach player will simultaneously through a gesture from the available options list.'
               '\nScoring goes as follows:\nRock > Scissors\nScissors > Paper\nPaper > Rock\nRock > Lizard\nLizard > Spock'
               '\nSpock > Scissors\nScissors > Lizard\nLizard > Paper\nPaper > Spock\nSpock > Rock')
+
     # Select 1-player or 2-players
     def select_mode(self):
         user_input = input('Enter mode - Single-Player | Multi-Player : ')
@@ -44,49 +45,24 @@ class Game(Score):
 
     # Run Game
     def start_game(self, player1, player2, cpu):
-        if self.mode_selected == 'Single-Player':
-            score = Score(0, 0, 0, 0)
-            while score.player1_wins != 2 and score.player2_wins != 2:
-                # Player1 move
-                Game.validate_user_input(self, player1, player2)
+        #Begin Score Tracker
+        score = Score(0, 0, 0, 0)
+        while score.player1_wins != 2 and score.player2_wins != 2 and score.tie_count != 2 and score.cpu_wins != 2:
+            # Player1 move
+            Game.validate_user_input(self, player1, player2)
+            if self.mode_selected == 'Single-Player':
                 # CPU move
                 n = random.randint(0, (len(self.options_list)-1))
                 cpu.gesture = self.options_list[n]
                 print(f'CPU selected : {cpu.gesture}')
-                # Scoring
+                # SP Scoring
                 score.scoring_rules(self.mode_selected, player1, cpu, player2)
-                # Score Tracker for game
+                # SP Update Score Tracker
                 score.score_tracker()
-        #MultiPlayer
-        if self.mode_selected == 'Multi-Player':
-            score = Score(0, 0, 0, 0)
-            while score.player1_wins != 2 and score.player2_wins != 2 and score.tie_count != 2:
-                # Player moves
-                Game.validate_user_input(self, player1, player2)
-                # Scoring
+            if self.mode_selected == 'Multi-Player':
+                # MP Scoring
                 score.scoring_rules(self.mode_selected, player1, cpu, player2)
-                # if player1.gesture == player2.gesture:
-                #     print('It is a tie!')
-                #     score.tie_count += 1
-                # elif player1.gesture == 'Rock' and player2.gesture in ('Lizard', 'Scissors'):
-                #     print(f'{player1.name} wins round!')
-                #     score.player1_wins += 1
-                # elif player1.gesture == 'Paper' and player2.gesture in ('Spock', 'Rock'):
-                #     print(f'{player1.name} wins round!')
-                #     score.player1_wins += 1
-                # elif player1.gesture == 'Scissors' and player2.gesture in ('Paper', 'Lizard'):
-                #     print(f'{player1.name} wins round!')
-                #     score.player1_wins += 1
-                # elif player1.gesture == 'Lizard' and player2.gesture in ('Paper', 'Spock'):
-                #     print(f'{player1.name} wins round!')
-                #     score.player1_wins += 1
-                # elif player1.gesture == 'Spock' and player2.gesture in ('Rock', 'Lizard'):
-                #     print(f'{player1.name} wins round!')
-                #     score.player1_wins += 1
-                # else:
-                #     print(f'{player2.name} wins round!')
-                #     score.player2_wins += 1
-                # Score Tracker for game
+                # MP Update Score Tracker
                 score.score_tracker()
 
     # End Game/Message
