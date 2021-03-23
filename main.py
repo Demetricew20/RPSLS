@@ -1,4 +1,4 @@
-from players import Humans, CPU
+from players import Humans, CPU, player_list
 from game import Game
 
 if __name__ == '__main__':
@@ -8,8 +8,13 @@ if __name__ == '__main__':
     rpsls.rules()
     rpsls.select_mode()
     cpu = CPU('CPU')
-    player1 = Humans('John')
-    player2 = Humans('Jane')
-    rpsls.start_game(player1, player2, cpu)
+    john = Humans('John')
+    jane = Humans('Jane')
+    player_list.add_player(john)
+    player_list.add_player(jane)
+    player_list.add_player(cpu)
+    rpsls.start_game(john, jane, cpu)
     rpsls.end_game()
+
+
 

@@ -13,4 +13,19 @@ class Humans(Players):
 
 class CPU(Players):
     def __init__(self, name):
-        super(CPU, self).__init__(name)
+        super().__init__(name)
+
+
+class PlayersList:
+    def __init__(self):
+        self.player_list = []
+
+    def add_player(self, player):
+        self.player_list.append(player)
+
+    def __repr__(self):
+        player_list = self.player_list.copy()
+        return f'{player_list}'
+
+
+player_list = PlayersList()
