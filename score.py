@@ -1,5 +1,6 @@
-from players import player_list
+from players import *
 from gesture import *
+import enum
 
 
 class Score:
@@ -8,7 +9,6 @@ class Score:
         self.player2_wins = player2_wins
         self.cpu_wins = cpu_wins
         self.tie_count = tie_count
-        self.tracker = [self.player1_wins, self.player2_wins, self.cpu_wins]
 
     def scoring_dictionary(self, mode_selected, player1, player2, cpu):
         gestures_dict = gestures.gestures_dict
@@ -36,19 +36,13 @@ class Score:
 
     def score_tracker(self, player1, player2, cpu):
         # Loop Through Players & Player wins
-        lst = player_list
+        tracker = [self.player1_wins, self.player2_wins, self.cpu_wins]
         if self.tie_count == 2:
             print('Game has ended in a tie!')
-        elif self.player1_wins == 2:
-            print(f'{player1.name} has won the game!')
-        elif self.player2_wins == 2:
-            print(f'{player2.name} has won the game!')
-        elif self.cpu_wins == 2:
-            print(f'{cpu.name} has won the game!')
-        # for i in range(0, len(self.tracker)):
-        #     if self.tracker[i] == 2:
-        #         print(f'{lst[i].name} has won the game!')
-        #         return
+        for i in range(0, len(tracker)):
+            if tracker[i] == 2:
+                print(f'{list_of_players[i].name} has won the game!')
+                return
 
 
 score = Score(0, 0, 0, 0)

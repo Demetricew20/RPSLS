@@ -1,8 +1,8 @@
 class Gestures:
     def __init__(self):
         self.gestures_dict = {'Rock': ('Lizard', 'Scissors'), 'Paper': ('Spock', 'Rock'),
-                              'Scissors': ('Paper', 'Lizard'),
-                              'Lizard': ('Paper', 'Spock'), 'Spock': ('Rock', 'Lizard')}
+                              'Scissors': ('Paper', 'Lizard'), 'Lizard': ('Paper', 'Spock'),
+                              'Spock': ('Rock', 'Lizard')}
 
     def dict_keys(self):
         keys = self.gestures_dict.keys()

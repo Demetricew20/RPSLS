@@ -23,9 +23,14 @@ class PlayersList:
     def add_player(self, player):
         self.player_list.append(player)
 
+    def __iter__(self):
+        for player in self.player_list:
+            return list(player)
+
     def __repr__(self):
-        player_list = self.player_list.copy()
-        return f'{player_list}'
+        list_of_players = self.player_list.copy()
+        return f'{list_of_players}'
 
 
 player_list = PlayersList()
+list_of_players = player_list.player_list
