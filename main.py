@@ -5,7 +5,6 @@ if __name__ == '__main__':
 
     rpsls = Game('Rock Paper Scissors Lizard Spock')
     rpsls.welcome_message()
-    rpsls.rules()
     rpsls.select_mode()
     cpu = CPU('CPU')
     john = Humans('John')

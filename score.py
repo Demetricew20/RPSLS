@@ -1,5 +1,6 @@
 from players import *
 from gesture import *
+from UI import user_interface
 
 
 class Score:
@@ -18,20 +19,20 @@ class Score:
         for key in gestures_dict:
             if player1.gesture == key:
                 if cpu.gesture in gestures_dict[key] or player2.gesture in gestures_dict[key]:
-                    print(f'{player1.name} wins round!')
+                    user_interface.round_winner(player1)
                     self.player1_wins += 1
                     return
                 else:
-                    Score.cpu_and_player2_scores(self, mode_selected, player2)
+                    Score.cpu_and_player2_scores(self, mode_selected, player2, cpu)
                     return
 
-    def cpu_and_player2_scores(self, mode_selected, player2):
+    def cpu_and_player2_scores(self, mode_selected, player2, cpu):
         if mode_selected == 'Single-Player':
             self.cpu_wins += 1
-            print('CPU wins round!')
+            user_interface.round_winner(cpu)
         elif mode_selected == 'Multi-Player':
             self.player2_wins += 1
-            print(f'{player2.name} wins round!')
+            user_interface.round_winner(player2)
 
     def score_tracker(self):
         # Loop Through Players & Player wins
@@ -40,7 +41,7 @@ class Score:
             print('Game has ended in a tie!')
         for i in range(0, len(tracker)):
             if tracker[i] == 2:
-                print(f'{list_of_players[i].name} has won the game!')
+                user_interface.game_winner(list_of_players[i])
                 return
 
 

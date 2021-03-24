@@ -1,6 +1,7 @@
 import random
 from score import Score, score
 from gesture import gestures
+from UI import user_interface
 
 
 class Game(Score):
@@ -16,37 +17,35 @@ class Game(Score):
 
     # Welcome Message
     def welcome_message(self):
-        print(f'Welcome to {self.name}!')
-
-    # Rules
-    def rules(self):
-        print('**RULES**:\nEach player will simultaneously through a gesture from the available options list.'
-              '\nScoring goes as follows:\nRock > Scissors\nRock > Lizard\nPaper > Rock\nPaper > Spock'
-              '\nScissors > Lizard\nScissors > Paper\nLizard > Spock\nLizard > Paper\nSpock > Scissors\nSpock > Rock')
+        user_interface.start_message(self.name)
+        user_interface.rules()
 
     # Select 1-player or 2-players
     def select_mode(self):
-        user_input = input('Enter mode - Single-Player | Multi-Player : ')
+        user_input = user_interface.mode_selection()
         while user_input not in self.mode_options:
-            user_input = input('Must choose Single-Player or Multi-Player. Try again: ')
+            user_interface.validation_statement()
+            user_input = user_interface.mode_selection()
         self.mode_selected = user_input
-        print(f'*{self.mode_selected} mode selected*')
+        user_interface.mode_selection_statement(self.mode_selected)
 
     def validate_user_input(self, player1, player2):
         if self.mode_selected == 'Single-Player':
-            print(f'Available Options: {gestures.dict_keys()}')
-            player1.gesture = input(f'{player1.name} select gesture: ')
+            user_interface.available_gestures(gestures.dict_keys())
+            user_interface.gesture_selection(player1)
             while player1.gesture not in gestures.dict_keys():
-                player1.gesture = input(f'*{player1.name}* choose from options list only! Try again: ')
-            print(f'{player1.name} selected : {player1.gesture}')
+                user_interface.validation_statement()
+                user_interface.gesture_selection(player1)
+            user_interface.gesture_selected_statement(player1)
         elif self.mode_selected == 'Multi-Player':
             player_list = [player1, player2]
-            print(f'Available Options: {gestures.dict_keys()}')
+            user_interface.available_gestures(gestures.dict_keys())
             for player in player_list:
-                player.gesture = input(f'{player.name} select gesture: ')
+                user_interface.gesture_selection(player)
                 while player.gesture not in gestures.dict_keys():
-                    player.gesture = input(f'*{player.name}* choose from options list only! Try again: ')
-                print(f'{player.name} selected : {player.gesture}')
+                    user_interface.validation_statement()
+                    user_interface.gesture_selection(player)
+                    user_interface.gesture_selected_statement(player)
 
     # Run Game
     def start_game(self, player1, player2, cpu):
@@ -57,7 +56,7 @@ class Game(Score):
             if self.mode_selected == 'Single-Player':
                 # CPU move
                 cpu.gesture = random.choice(list(gestures.dict_keys()))
-                print(f'CPU selected : {cpu.gesture}')
+                user_interface.gesture_selected_statement(cpu)
                 # SP Scoring
                 score.scoring_dictionary(self.mode_selected, player1, player2, cpu)
                 # SP Update Score Tracker
