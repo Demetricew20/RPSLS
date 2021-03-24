@@ -33,7 +33,7 @@ class Score:
             self.player2_wins += 1
             print(f'{player2.name} wins round!')
 
-    def score_tracker(self, player1, player2, cpu):
+    def score_tracker(self):
         # Loop Through Players & Player wins
         tracker = [self.player1_wins, self.player2_wins, self.cpu_wins]
         if self.tie_count == 2:

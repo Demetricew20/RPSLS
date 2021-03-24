@@ -61,12 +61,12 @@ class Game(Score):
                 # SP Scoring
                 score.scoring_dictionary(self.mode_selected, player1, player2, cpu)
                 # SP Update Score Tracker
-                score.score_tracker(player1, player2, cpu)
+                score.score_tracker()
             if self.mode_selected == 'Multi-Player':
                 # MP Scoring
                 score.scoring_dictionary(self.mode_selected, player1, player2, cpu)
                 # MP Update Score Tracker
-                score.score_tracker(player1, player2, cpu)
+                score.score_tracker()
 
     # End Game/Message
     def end_game(self):
