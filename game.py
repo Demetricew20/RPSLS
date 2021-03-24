@@ -24,11 +24,6 @@ class Game(Score):
               '\nScoring goes as follows:\nRock > Scissors\nRock > Lizard\nPaper > Rock\nPaper > Spock'
               '\nScissors > Lizard\nScissors > Paper\nLizard > Spock\nLizard > Paper\nSpock > Scissors\nSpock > Rock')
 
-    def dict_to_list(self):
-        keys = self.dictionary.keys()
-        keys_list = list(keys)
-        return keys_list
-
     # Select 1-player or 2-players
     def select_mode(self):
         user_input = input('Enter mode - Single-Player | Multi-Player : ')

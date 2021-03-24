@@ -1,6 +1,5 @@
 from players import *
 from gesture import *
-import enum
 
 
 class Score:
