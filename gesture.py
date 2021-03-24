@@ -15,5 +15,4 @@ class Gestures:
         return values_list
 
 
-
 gestures = Gestures()

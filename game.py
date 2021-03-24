@@ -9,9 +9,6 @@ class Game(Score):
         self.name = name
         self.mode_options = ('Single-Player', 'Multi-Player')
         self.mode_selected = ''
-        self.gesture_list = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock']
-        self.dictionary = {'Rock': ('Lizard', 'Scissors'), 'Paper': ('Spock', 'Rock'), 'Scissors': ('Paper', 'Lizard'),
-                           'Lizard': ('Paper', 'Spock'), 'Spock': ('Rock', 'Lizard')}
         super().__init__(player1_wins=score.player1_wins, player2_wins=score.player2_wins, cpu_wins=score.cpu_wins
                          , tie_count=score.tie_count)
 
