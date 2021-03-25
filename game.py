@@ -32,6 +32,7 @@ class Game(Score):
             user_interface.gesture_selection(player1)
             while player1.gesture not in gestures.dict_keys():
                 user_interface.validation_statement()
+                user_interface.available_gestures(gestures.dict_keys())
                 user_interface.gesture_selection(player1)
             user_interface.gesture_selected_statement(player1)
         elif self.mode_selected == 'Multi-Player':
@@ -42,8 +43,10 @@ class Game(Score):
                 user_interface.clear_console()
                 while player.gesture not in gestures.dict_keys():
                     user_interface.validation_statement()
+                    user_interface.available_gestures(gestures.dict_keys())
                     user_interface.gesture_selection(player)
                     user_interface.gesture_selected_statement(player)
+                    user_interface.clear_console()
 
     # Run Game
     def start_game(self, player1, player2, cpu):
