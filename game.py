@@ -35,9 +35,9 @@ class Game(Score):
                 user_interface.gesture_selection(player1)
             user_interface.gesture_selected_statement(player1)
         elif self.mode_selected == 'Multi-Player':
-            player_list = [player1, player2]
+            lst = [player1, player2]
             user_interface.available_gestures(gestures.dict_keys())
-            for player in player_list:
+            for player in lst:
                 user_interface.gesture_selection(player)
                 while player.gesture not in gestures.dict_keys():
                     user_interface.validation_statement()
@@ -66,5 +66,6 @@ class Game(Score):
 
     # End Game/Message
     def end_game(self):
-        print('Game Over. Rematch?')
+        user_interface.end_game_message()
+
 

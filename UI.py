@@ -1,4 +1,6 @@
-from players import Players
+import keyboard
+import os
+
 
 class UI:
     def __init__(self):
@@ -40,6 +42,16 @@ class UI:
 
     def game_winner(self, player):
         print(f'\n{player.name} has won the game!')
+
+    def end_game_message(self):
+        print('Game over! Press DOWN arrow for rematch! Press Enter key to exit game.')
+        while True:
+            if keyboard.is_pressed('down'):
+                os.system('python main.py')
+                break
+            elif keyboard.is_pressed('enter'):
+                print('Thanks for playing!')
+                break
 
 
 user_interface = UI()
